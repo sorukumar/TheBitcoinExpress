@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bitcoin Mining: The Heart of the Blockchain &#8212; The Bitcoin Express</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/mining';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bitcoin Transactions: The Building Blocks of the Blockchain" href="transactions.html" />
+    <link rel="prev" title="Bitcoin: Digital Money for the Internet Age" href="bitcoin_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="The Bitcoin Express - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="The Bitcoin Express - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    The Bitcoin Express
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bitcoin_intro.html">Bitcoin: Digital Money for the Internet Age</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bitcoin Mining: The Heart of the Blockchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Bitcoin Transactions: The Building Blocks of the Blockchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Bitcoin Wallets: Your Gateway to the Blockchain</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/edit/master/bitcoin_express/content/mining.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/issues/new?title=Issue%20on%20page%20%2Fcontent/mining.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/mining.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bitcoin Mining: The Heart of the Blockchain</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-mining">What is Mining?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mining-process">The Mining Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-mining-process-in-code">Understanding the Mining Process in Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-mining-difficulty">Visualizing Mining Difficulty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-graphs">Understanding the Graphs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-bitcoin-block">Anatomy of a Bitcoin Block</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bitcoin-mining-the-heart-of-the-blockchain">
+<h1>Bitcoin Mining: The Heart of the Blockchain<a class="headerlink" href="#bitcoin-mining-the-heart-of-the-blockchain" title="Link to this heading">#</a></h1>
+<section id="what-is-mining">
+<h2>What is Mining?<a class="headerlink" href="#what-is-mining" title="Link to this heading">#</a></h2>
+<p>Imagine a global contest where participants solve complex puzzles. The first to solve gets a prize and the right to add a new page to a special book. This is Bitcoin mining in a nutshell!</p>
+<ul class="simple">
+<li><p><strong>Miners</strong> are the contestants</p></li>
+<li><p><strong>The puzzle</strong> is a cryptographic challenge</p></li>
+<li><p><strong>The prize</strong> is newly created bitcoins and transaction fees</p></li>
+<li><p><strong>The book</strong> is the blockchain</p></li>
+</ul>
+</section>
+<section id="the-mining-process">
+<h2>The Mining Process<a class="headerlink" href="#the-mining-process" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Collect unconfirmed transactions</strong>: Miners gather recent Bitcoin transactions that haven’t been recorded in the blockchain yet.</p></li>
+<li><p><strong>Create a block</strong>: Miners bundle these transactions into a “block” - like filling a page in our book.</p></li>
+<li><p><strong>Solve the puzzle</strong>: Miners compete to find a special number (nonce) that, when combined with the block data, produces a hash starting with a certain number of zeros.</p></li>
+<li><p><strong>Seal the block</strong>: The winning miner adds their block to the blockchain and receives the mining reward.</p></li>
+</ol>
+<p>Let’s see how this works in code:</p>
+</section>
+<section id="understanding-the-mining-process-in-code">
+<h2>Understanding the Mining Process in Code<a class="headerlink" href="#understanding-the-mining-process-in-code" title="Link to this heading">#</a></h2>
+<p>Our code will simulate a simplified version of Bitcoin mining. Here’s what it will demonstrate:</p>
+<ol class="arabic simple">
+<li><p>How a block is created and its hash is calculated</p></li>
+<li><p>The mining process of finding a valid hash</p></li>
+<li><p>How increasing difficulty affects mining time and attempts</p></li>
+</ol>
+<p>Let’s break it down:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">class</span> <span class="nc">Block</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transactions</span><span class="p">,</span> <span class="n">previous_hash</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transactions</span> <span class="o">=</span> <span class="n">transactions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous_hash</span> <span class="o">=</span> <span class="n">previous_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nonce</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_hash</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">calculate_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">block_content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">previous_hash</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">nonce</span><span class="si">}{</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transactions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">block_content</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Blockchain</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">create_genesis_block</span><span class="p">()]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">difficulty</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pending_transactions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mining_reward</span> <span class="o">=</span> <span class="mf">6.25</span>  <span class="c1"># Bitcoin reward as of 2023</span>
+
+    <span class="k">def</span> <span class="nf">create_genesis_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Block</span><span class="p">([</span><span class="s2">&quot;Genesis Block&quot;</span><span class="p">],</span> <span class="s2">&quot;0&quot;</span> <span class="o">*</span> <span class="mi">64</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_latest_block</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">mine_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">miner_address</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">Block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pending_transactions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_latest_block</span><span class="p">()</span><span class="o">.</span><span class="n">hash</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mining in progress...&quot;</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">block</span><span class="o">.</span><span class="n">hash</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">difficulty</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;0&quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">difficulty</span><span class="p">:</span>
+            <span class="n">block</span><span class="o">.</span><span class="n">nonce</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">block</span><span class="o">.</span><span class="n">hash</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">calculate_hash</span><span class="p">()</span>
+        
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">mining_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Block mined! Time taken: </span><span class="si">{</span><span class="n">mining_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Block hash: </span><span class="si">{</span><span class="n">block</span><span class="o">.</span><span class="n">hash</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nonce: </span><span class="si">{</span><span class="n">block</span><span class="o">.</span><span class="n">nonce</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pending_transactions</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Mining Reward: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mining_reward</span><span class="si">}</span><span class="s2"> BTC to </span><span class="si">{</span><span class="n">miner_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">mining_time</span><span class="p">,</span> <span class="n">block</span><span class="o">.</span><span class="n">nonce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-parts-of-the-code-explained">
+<h3>Key Parts of the Code Explained<a class="headerlink" href="#key-parts-of-the-code-explained" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Block Class</strong>: Represents a single block in the blockchain.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_hash()</span></code>: Creates a unique identifier for the block using its contents.</p></li>
+</ul>
+</li>
+<li><p><strong>Blockchain Class</strong>: Manages the entire chain of blocks.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mine_block()</span></code>: Simulates the mining process, trying different nonces until a valid hash is found.</p></li>
+</ul>
+</li>
+<li><p><strong>Difficulty</strong>: Represented by the number of leading zeros required in the block hash.</p>
+<ul class="simple">
+<li><p>Higher difficulty means more zeros, making it harder to find a valid hash.</p></li>
+</ul>
+</li>
+<li><p><strong>Nonce</strong>: A number that miners change to get different hashes until they find one that meets the difficulty requirement.</p></li>
+</ol>
+<p>This simplified model helps us understand the core concepts of Bitcoin mining without getting lost in the complexities of the actual Bitcoin protocol.</p>
+</section>
+</section>
+<section id="visualizing-mining-difficulty">
+<h2>Visualizing Mining Difficulty<a class="headerlink" href="#visualizing-mining-difficulty" title="Link to this heading">#</a></h2>
+<p>Now, let’s see how changing the mining difficulty affects the mining process. We’ll mine blocks at different difficulty levels and plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blockchain</span> <span class="o">=</span> <span class="n">Blockchain</span><span class="p">()</span>
+
+<span class="c1"># Add some transactions</span>
+<span class="n">blockchain</span><span class="o">.</span><span class="n">pending_transactions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Alice sends 1 BTC to Bob&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Charlie sends 0.5 BTC to David&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Mine blocks with increasing difficulty</span>
+<span class="n">difficulties</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">mining_times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">nonces</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">diff</span> <span class="ow">in</span> <span class="n">difficulties</span><span class="p">:</span>
+    <span class="n">blockchain</span><span class="o">.</span><span class="n">difficulty</span> <span class="o">=</span> <span class="n">diff</span>
+    <span class="n">time_taken</span><span class="p">,</span> <span class="n">nonce</span> <span class="o">=</span> <span class="n">blockchain</span><span class="o">.</span><span class="n">mine_block</span><span class="p">(</span><span class="s2">&quot;miner_address&quot;</span><span class="p">)</span>
+    <span class="n">mining_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_taken</span><span class="p">)</span>
+    <span class="n">nonces</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nonce</span><span class="p">)</span>
+    
+<span class="c1"># Visualize the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">difficulties</span><span class="p">,</span> <span class="n">mining_times</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mining Difficulty vs Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Difficulty (number of leading zeros)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mining Time (seconds)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">difficulties</span><span class="p">,</span> <span class="n">nonces</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mining Difficulty vs Nonce&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Difficulty (number of leading zeros)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Nonce (number of attempts)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mining in progress...
+Block mined! Time taken: 0.00 seconds
+Block hash: 0003acda686418a2a287be70ef03997c2a0cc8c5a047c7fafcb696e46886ce8d
+Nonce: 215
+Mining in progress...
+Block mined! Time taken: 0.01 seconds
+Block hash: 00070dad52d361f148608cf0925fdd5624374657c446448500fdb66c4550604c
+Nonce: 5533
+Mining in progress...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Block mined! Time taken: 0.27 seconds
+Block hash: 000054e6ab506cf271a1f6326564c05f8e0c387ba6cd5f23c2b9f03c9981352c
+Nonce: 108425
+Mining in progress...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Block mined! Time taken: 0.66 seconds
+Block hash: 00000023e6fdc483fc5519bc180ec7eeb9159aa7b5101e633ff3706faa7d4b54
+Nonce: 267881
+</pre></div>
+</div>
+<img alt="../_images/d9999310090b0136c6455b1fb835ebe08d28ef695bf756ce11e9d340e3960630.png" src="../_images/d9999310090b0136c6455b1fb835ebe08d28ef695bf756ce11e9d340e3960630.png" />
+<img alt="../_images/cf29dded94dae3c4742ea3a9adfcb2741e5bf3123beab910217ecd863f18f897.png" src="../_images/cf29dded94dae3c4742ea3a9adfcb2741e5bf3123beab910217ecd863f18f897.png" />
+</div>
+</div>
+<section id="understanding-the-graphs">
+<h3>Understanding the Graphs<a class="headerlink" href="#understanding-the-graphs" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Mining Difficulty vs Time Graph</strong>:</p>
+<ul class="simple">
+<li><p>X-axis: Difficulty (number of leading zeros required)</p></li>
+<li><p>Y-axis: Time taken to mine a block (in seconds)</p></li>
+<li><p>What it shows: As difficulty increases, mining time grows exponentially</p></li>
+<li><p>Why it’s important: Demonstrates how Bitcoin can adjust difficulty to maintain consistent block times</p></li>
+</ul>
+</li>
+<li><p><strong>Mining Difficulty vs Nonce Graph</strong>:</p>
+<ul class="simple">
+<li><p>X-axis: Difficulty (number of leading zeros required)</p></li>
+<li><p>Y-axis: Nonce (number of attempts to find a valid hash)</p></li>
+<li><p>What it shows: Higher difficulty requires exponentially more attempts to find a valid hash</p></li>
+<li><p>Why it’s important: Illustrates the increasing computational work required as Bitcoin’s network grows</p></li>
+</ul>
+</li>
+</ol>
+<p>These visualizations help us understand why mining becomes more challenging over time and how it relates to the security of the Bitcoin network.</p>
+</section>
+</section>
+<section id="anatomy-of-a-bitcoin-block">
+<h2>Anatomy of a Bitcoin Block<a class="headerlink" href="#anatomy-of-a-bitcoin-block" title="Link to this heading">#</a></h2>
+<p>A Bitcoin block is like a digital container that holds important information. Here’s a detailed look at its structure:</p>
+<p>┌──────────────────────────────────────────────────────────┐
+│                        Block Header                      │
+├──────────────────────────────────────────────────────────┤
+│ Version: 0x20000000                                      │
+│ Previous Block Hash: 0000000000000000000769b…          │
+│ Merkle Root: 4a5e1e4b…                                 │
+│ Timestamp: 2023-10-16 12:34:56                           │
+│ Difficulty Target: 0x1b0404cb                            │
+│ Nonce: 2083236893                                        │
+├──────────────────────────────────────────────────────────┤
+│                        Transactions                      │
+├──────────────────────────────────────────────────────────┤
+│ Transaction 1: Alice sends 1 BTC to Bob                  │
+│ Transaction 2: Charlie sends 0.5 BTC to David            │
+│ Transaction 3: Eve sends 0.2 BTC to Frank                │
+│ …                                                      │
+└──────────────────────────────────────────────────────────┘</p>
+<section id="key-components">
+<h3>Key Components:<a class="headerlink" href="#key-components" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Block Header</strong>: Contains metadata about the block, crucial for mining.</p>
+<ul>
+<li><p><strong>Version</strong>: Indicates the software version used to create the block.</p></li>
+<li><p><strong>Previous Block Hash</strong>: Links to the previous block, ensuring continuity.</p></li>
+<li><p><strong>Merkle Root</strong>: A single hash summarizing all transactions in the block.</p></li>
+<li><p><strong>Timestamp</strong>: When the block was created.</p></li>
+<li><p><strong>Difficulty Target</strong>: The current difficulty level for mining.</p></li>
+<li><p><strong>Nonce</strong>: A number miners change to find a valid hash.</p></li>
+</ul>
+</li>
+<li><p><strong>Transactions</strong>: The list of all Bitcoin transactions included in the block.</p></li>
+</ul>
+<p>This visualization helps illustrate how each block is structured and how it connects to the rest of the blockchain. The block header is essential for the mining process, as miners must find a nonce that results in a hash meeting the difficulty target.</p>
+</section>
+</section>
+<section id="key-concepts">
+<h2>Key Concepts:<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Hash Function</strong>: A mathematical function that turns any input into a fixed-size string of characters. In Bitcoin, SHA-256 is used.</p></li>
+<li><p><strong>Nonce</strong>: The “number used once” that miners change to get different hashes until they find one meeting the difficulty requirement.</p></li>
+<li><p><strong>Proof of Work</strong>: The solution to the mining puzzle, proving computational work was done.</p></li>
+<li><p><strong>Block Reward</strong>: New bitcoins created and given to the miner who successfully mines a block. It halves approximately every four years.</p></li>
+<li><p><strong>Mining Pools</strong>: Groups of miners who combine their computing power and share rewards, increasing their chances of solving blocks.</p></li>
+</ol>
+<p>Understanding mining helps us see how Bitcoin maintains security and integrity without central authority, using math and incentives to create a trustworthy digital currency system.</p>
+</section>
+<section id="what-did-we-learn">
+<h2>What Did We Learn?<a class="headerlink" href="#what-did-we-learn" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Mining is a competitive process</strong>:
+Miners worldwide race to solve a mathematical puzzle. The winner gets to add a new block and receive a reward.</p></li>
+<li><p><strong>The puzzle difficulty is adjustable</strong>:
+In Bitcoin, difficulty is measured by the required number of leading zeros in the block hash. More zeros = harder puzzle.</p></li>
+<li><p><strong>Harder puzzles take longer to solve</strong>:
+As seen in our graphs, increasing difficulty (more leading zeros) dramatically increases solving time and attempts (nonce).</p></li>
+<li><p><strong>Bitcoin auto-adjusts difficulty</strong>:
+Imagine a race always taking 10 minutes, regardless of runner speed. If faster runners join, the track lengthens. If runners leave, it shortens. This is how Bitcoin maintains its 10-minute average block time as miners join or leave.</p></li>
+<li><p><strong>Mining secures the network</strong>:
+The difficulty and cost of mining make altering past transactions extremely challenging. It’s like trying to redo all puzzles faster than the entire world combined!</p></li>
+<li><p><strong>Energy intensive</strong>:
+Mining requires significant computing power and electricity, contributing to Bitcoin’s notable energy consumption.</p></li>
+</ol>
+</section>
+<section id="quick-check-did-you-get-it">
+<h2>Quick Check: Did You Get It?<a class="headerlink" href="#quick-check-did-you-get-it" title="Link to this heading">#</a></h2>
+<p>Let’s see if you caught the main ideas about mining:</p>
+<ol class="arabic simple">
+<li><p>What is the primary purpose of mining in Bitcoin? (Hint: It involves solving a puzzle)</p></li>
+<li><p>What do we call the number that miners change to find a valid hash? (Hint: It’s a “number used once”)</p></li>
+<li><p>What happens to the mining difficulty as more miners join the network? (Hint: It adjusts to keep block time steady)</p></li>
+<li><p>What is the reward given to miners for successfully mining a block? (Hint: It’s a type of digital currency)</p></li>
+</ol>
+<p>Think about your answers, then check below!</p>
+<details>
+<summary>Click to see the answers</summary>
+<ol class="arabic simple">
+<li><p>To validate transactions and add new blocks to the blockchain.</p></li>
+<li><p>Nonce.</p></li>
+<li><p>The difficulty increases.</p></li>
+<li><p>Newly created bitcoins (block reward).</p></li>
+</ol>
+<p>Congratulations on completing the mining chapter!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bitcoin_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bitcoin: Digital Money for the Internet Age</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="transactions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bitcoin Transactions: The Building Blocks of the Blockchain</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-mining">What is Mining?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mining-process">The Mining Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-mining-process-in-code">Understanding the Mining Process in Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-mining-difficulty">Visualizing Mining Difficulty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-graphs">Understanding the Graphs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-bitcoin-block">Anatomy of a Bitcoin Block</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Saurabh Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

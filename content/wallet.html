@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bitcoin Wallets: Your Gateway to the Blockchain &#8212; The Bitcoin Express</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/wallet';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Bitcoin Transactions: The Building Blocks of the Blockchain" href="transactions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="The Bitcoin Express - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="The Bitcoin Express - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    The Bitcoin Express
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bitcoin_intro.html">Bitcoin: Digital Money for the Internet Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mining.html">Bitcoin Mining: The Heart of the Blockchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transactions.html">Bitcoin Transactions: The Building Blocks of the Blockchain</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bitcoin Wallets: Your Gateway to the Blockchain</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/edit/master/bitcoin_express/content/wallet.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/issues/new?title=Issue%20on%20page%20%2Fcontent/wallet.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/wallet.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bitcoin Wallets: Your Gateway to the Blockchain</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-bitcoin-wallet">What is a Bitcoin Wallet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-wallet">The Anatomy of a Wallet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-both-public-key-and-wallet-address-are-needed">Why Both (public key and wallet address) Are Needed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-keys-and-address">Deriving Keys and Address</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-the-process">Explanation of the Process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-create-a-wallet">Let’s Create a Wallet!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-create-a-wallet-and-use-it">Let’s Create a Wallet and Use It!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-transactions">Visualizing the Transactions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bitcoin-wallets-your-gateway-to-the-blockchain">
+<h1>Bitcoin Wallets: Your Gateway to the Blockchain<a class="headerlink" href="#bitcoin-wallets-your-gateway-to-the-blockchain" title="Link to this heading">#</a></h1>
+<section id="what-is-a-bitcoin-wallet">
+<h2>What is a Bitcoin Wallet?<a class="headerlink" href="#what-is-a-bitcoin-wallet" title="Link to this heading">#</a></h2>
+<p>Think of a Bitcoin wallet like a magical envelope. It can receive money from anyone who knows its address, and it can send money if you know the secret spell (private key).</p>
+<p>In essence, a Bitcoin wallet is a tool that allows you to interact with the Bitcoin network, enabling you to send and receive Bitcoin securely.</p>
+</section>
+<section id="the-anatomy-of-a-wallet">
+<h2>The Anatomy of a Wallet<a class="headerlink" href="#the-anatomy-of-a-wallet" title="Link to this heading">#</a></h2>
+<p>A Bitcoin wallet consists of three main components:</p>
+<ol class="arabic simple">
+<li><p><strong>Private Key</strong>: This is your secret spell. It allows you to access and spend your Bitcoin. Keep it safe!</p></li>
+<li><p><strong>Public Key</strong>: This is derived from your private key and acts like your bank account number. It’s used to receive Bitcoin and verify ownership.</p></li>
+<li><p><strong>Wallet Address</strong>: This is a hashed version of your public key, formatted for easy sharing. It’s what you give to others to send you Bitcoin.</p></li>
+</ol>
+<section id="why-both-public-key-and-wallet-address-are-needed">
+<h3>Why Both (public key and wallet address) Are Needed<a class="headerlink" href="#why-both-public-key-and-wallet-address-are-needed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Public Key</strong>: Used for encryption and verification, ensuring secure transactions.</p></li>
+<li><p><strong>Wallet Address</strong>: A shorter, user-friendly representation of the public key, making it easier to share for receiving funds.</p></li>
+</ul>
+<p>Together, they enhance security and usability in the Bitcoin ecosystem.</p>
+</section>
+</section>
+<section id="deriving-keys-and-address">
+<h2>Deriving Keys and Address<a class="headerlink" href="#deriving-keys-and-address" title="Link to this heading">#</a></h2>
+<p>Here’s how the components of a Bitcoin wallet relate to each other through hashing:</p>
+<p><strong>Private Key  →  ECDSA  →  Public Key  →  SHA-256  →  Hash  →  RIPEMD-160  →  Wallet Address</strong></p>
+<section id="explanation-of-the-process">
+<h3>Explanation of the Process<a class="headerlink" href="#explanation-of-the-process" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>ECDSA</strong>: The algorithm used to generate the public key from the private key.</p></li>
+<li><p><strong>Public Key</strong>: Your bank account number in the Bitcoin network.</p></li>
+<li><p><strong>SHA-256</strong>: The first hashing step applied to the public key.</p></li>
+<li><p><strong>Hash</strong>: The result of the SHA-256 hashing.</p></li>
+<li><p><strong>RIPEMD-160</strong>: The second hashing step that produces the wallet address.</p></li>
+<li><p><strong>Wallet Address</strong>: The address you share with others to receive Bitcoin.</p></li>
+</ul>
+</section>
+</section>
+<section id="lets-create-a-wallet">
+<h2>Let’s Create a Wallet!<a class="headerlink" href="#lets-create-a-wallet" title="Link to this heading">#</a></h2>
+<p>Now, let’s write some code to create a simple Bitcoin wallet. This code will demonstrate how to generate a key pair and create a wallet address.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install base58 # run it if any of the libraries are not installed</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">ecdsa</span>
+<span class="kn">import</span> <span class="nn">base58</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">class</span> <span class="nc">Wallet</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">private_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">public_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_key_pair</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_address</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transactions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">generate_key_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="n">ecdsa</span><span class="o">.</span><span class="n">SigningKey</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">ecdsa</span><span class="o">.</span><span class="n">SECP256k1</span><span class="p">)</span>
+        <span class="n">vk</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">get_verifying_key</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">sk</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">vk</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">generate_address</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">public_key_bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">public_key</span><span class="p">)</span>
+        <span class="n">sha256_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">public_key_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">ripemd160_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;ripemd160&#39;</span><span class="p">,</span> <span class="n">sha256_hash</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">version_byte</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">version_byte</span> <span class="o">+</span> <span class="n">ripemd160_hash</span>
+        <span class="n">checksum</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">binary_address</span> <span class="o">=</span> <span class="n">payload</span> <span class="o">+</span> <span class="n">checksum</span>
+        <span class="k">return</span> <span class="n">base58</span><span class="o">.</span><span class="n">b58encode</span><span class="p">(</span><span class="n">binary_address</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create_transaction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recipient_address</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">balance</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not enough funds!&quot;</span><span class="p">)</span>
+        
+        <span class="n">transaction</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">recipient_address</span><span class="p">,</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">amount</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">transaction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-parts-of-the-code-explained">
+<h3>Key Parts of the Code Explained<a class="headerlink" href="#key-parts-of-the-code-explained" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Wallet Class</strong>: Represents a Bitcoin wallet.</p>
+<ul class="simple">
+<li><p><strong>Attributes</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">private_key</span></code>: Your secret key for spending Bitcoin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public_key</span></code>: Your public key derived from the private key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code>: The wallet address derived from the public key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">balance</span></code>: The current balance of the wallet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transactions</span></code>: A list of transactions made from this wallet.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>generate_key_pair()</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Generates a new ECDSA key pair for the wallet.</p></li>
+<li><p><strong>Returns</strong>: A private key and a public key.</p></li>
+</ul>
+</li>
+<li><p><strong>generate_address()</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Creates a wallet address from the public key.</p></li>
+<li><p><strong>Process</strong>: Uses SHA-256 and RIPEMD-160 hashing to derive the address.</p></li>
+</ul>
+</li>
+<li><p><strong>create_transaction(recipient_address, amount)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Creates a new transaction to send Bitcoin.</p></li>
+<li><p><strong>Checks</strong>: Ensures there are enough funds before proceeding.</p></li>
+<li><p><strong>Returns</strong>: The transaction details.</p></li>
+</ul>
+</li>
+</ol>
+<p>This code provides a basic understanding of how Bitcoin wallets function and how they interact with the Bitcoin network.</p>
+</section>
+</section>
+<section id="lets-create-a-wallet-and-use-it">
+<h2>Let’s Create a Wallet and Use It!<a class="headerlink" href="#lets-create-a-wallet-and-use-it" title="Link to this heading">#</a></h2>
+<p>Now, we’ll create a new wallet and simulate receiving and sending Bitcoin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new wallet</span>
+<span class="n">my_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your Bitcoin Address: </span><span class="si">{</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s pretend we received some bitcoin</span>
+<span class="n">my_wallet</span><span class="o">.</span><span class="n">balance</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Now let&#39;s make some transactions</span>
+<span class="n">recipients</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2&quot;</span><span class="p">,</span> <span class="s2">&quot;3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy&quot;</span><span class="p">,</span> <span class="s2">&quot;bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">recipient</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">recipients</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+  <span class="n">amount</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.5</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">tx</span> <span class="o">=</span> <span class="n">my_wallet</span><span class="o">.</span><span class="n">create_transaction</span><span class="p">(</span><span class="n">recipient</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sent </span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="s2"> BTC to </span><span class="si">{</span><span class="n">recipient</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transaction failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final balance: </span><span class="si">{</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">balance</span><span class="si">}</span><span class="s2"> BTC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your Bitcoin Address: 1MQdeXjEBJmVuntAZQYNvui48trbByosY5
+Sent 0.5 BTC to 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+Sent 1.0 BTC to 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy
+Sent 1.5 BTC to bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+Final balance: 7.0 BTC
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-the-transactions">
+<h2>Visualizing the Transactions<a class="headerlink" href="#visualizing-the-transactions" title="Link to this heading">#</a></h2>
+<p>Let’s visualize our transactions to better understand how the wallet interacts with the Bitcoin network.</p>
+<p><em>Note: Understanding the visualization code is not necessary to grasp the core concepts of wallets or Bitcoin. This visualization serves as an additional tool to illustrate the relationship between transactions and wallet balances.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Prepare data for visualization</span>
+<span class="n">transaction_amounts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tx</span><span class="p">[</span><span class="s1">&#39;amount&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tx</span> <span class="ow">in</span> <span class="n">my_wallet</span><span class="o">.</span><span class="n">transactions</span><span class="p">]</span>
+<span class="n">transaction_numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">transactions</span><span class="p">)))</span>  <span class="c1"># Convert range to list</span>
+
+<span class="c1"># Initialize the balance list with the initial balance</span>
+<span class="n">initial_balance</span> <span class="o">=</span> <span class="n">my_wallet</span><span class="o">.</span><span class="n">balance</span>
+<span class="n">balances</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_balance</span><span class="p">]</span>  <span class="c1"># Start with the initial balance</span>
+
+<span class="c1"># Calculate the balance after each transaction</span>
+<span class="k">for</span> <span class="n">amount</span> <span class="ow">in</span> <span class="n">transaction_amounts</span><span class="p">:</span>
+  <span class="n">new_balance</span> <span class="o">=</span> <span class="n">balances</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">amount</span>  <span class="c1"># Deduct the transaction amount</span>
+  <span class="n">balances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_balance</span><span class="p">)</span>
+
+<span class="c1"># Create a figure with two y-axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot transaction amounts</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">transaction_numbers</span><span class="p">,</span> <span class="n">transaction_amounts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transaction Amounts (BTC)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Transaction Number&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Transaction Amount (BTC)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">transaction_numbers</span><span class="p">)</span>
+<span class="c1"># Create a second y-axis for the balance</span>
+<span class="c1"># Use transaction_numbers + [len(transaction_numbers)] to match the length of balances</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">transaction_numbers</span> <span class="o">+</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">transaction_numbers</span><span class="p">)],</span> <span class="n">balances</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Balance (BTC)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Balance (BTC)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add titles and legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Your Bitcoin Transactions and Balance Over Time&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a2d651f9bf785b7d896ca7b64fc37428e7667c26d34bd51f4febe39b97a0f758.png" src="../_images/a2d651f9bf785b7d896ca7b64fc37428e7667c26d34bd51f4febe39b97a0f758.png" />
+</div>
+</div>
+</section>
+<section id="what-did-we-learn">
+<h2>What Did We Learn?<a class="headerlink" href="#what-did-we-learn" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>A Bitcoin wallet is essentially a pair of keys</strong>: A public key (your address) and a private key (your secret spell).</p></li>
+<li><p><strong>The wallet address is derived from the public key</strong>: This involves a series of cryptographic operations.</p></li>
+<li><p><strong>Transactions decrease your wallet balance</strong>: Each time you send Bitcoin, your balance is updated.</p></li>
+<li><p><strong>In real life, transactions aren’t final until they’re included in a mined block</strong>: This ensures that the transaction is secure and verified.</p></li>
+<li><p><strong>You don’t actually store Bitcoin in your wallet</strong>: The wallet stores your keys; the blockchain keeps track of all transactions and balances.</p></li>
+<li><p><strong>Your private key should never be shared</strong>: It’s the spell that allows spending from your address!</p></li>
+</ol>
+<p>This simple wallet demonstrates the basic concepts, but real Bitcoin wallets have many more features for security and usability.</p>
+</section>
+<section id="quick-check-did-you-get-it">
+<h2>Quick Check: Did You Get It?<a class="headerlink" href="#quick-check-did-you-get-it" title="Link to this heading">#</a></h2>
+<p>Let’s see if you caught the main ideas about Bitcoin wallets:</p>
+<ol class="arabic simple">
+<li><p>What are the two main keys in a Bitcoin wallet? (Hint: One is public, and one is secret)</p></li>
+<li><p>What does the wallet address represent? (Hint: It’s like your bank account number)</p></li>
+<li><p>What happens to your balance when you send Bitcoin? (Hint: It decreases)</p></li>
+</ol>
+<p>Think about your answers, then check below!</p>
+<details>
+<summary>Click to see the answers</summary>
+<ol class="arabic simple">
+<li><p>Public key and private key.</p></li>
+<li><p>It represents where you can receive Bitcoin.</p></li>
+<li><p>Your balance decreases.</p></li>
+</ol>
+<p>Congratulations on completing the wallets chapter!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="transactions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bitcoin Transactions: The Building Blocks of the Blockchain</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-bitcoin-wallet">What is a Bitcoin Wallet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-wallet">The Anatomy of a Wallet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-both-public-key-and-wallet-address-are-needed">Why Both (public key and wallet address) Are Needed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-keys-and-address">Deriving Keys and Address</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-the-process">Explanation of the Process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-create-a-wallet">Let’s Create a Wallet!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-create-a-wallet-and-use-it">Let’s Create a Wallet and Use It!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-transactions">Visualizing the Transactions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Saurabh Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
