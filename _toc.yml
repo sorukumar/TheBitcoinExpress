@@ -1,0 +1,8 @@
+---
+format: jb-book
+root: index
+chapters:
+  - file: content/bitcoin_intro
+  - file: content/mining
+  - file: content/transactions
+  - file: content/wallet

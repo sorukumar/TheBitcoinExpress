@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bitcoin Transactions: The Building Blocks of the Blockchain &#8212; The Bitcoin Express</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/transactions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bitcoin Wallets: Your Gateway to the Blockchain" href="wallet.html" />
+    <link rel="prev" title="Bitcoin Mining: The Heart of the Blockchain" href="mining.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="The Bitcoin Express - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="The Bitcoin Express - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    The Bitcoin Express
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bitcoin_intro.html">Bitcoin: Digital Money for the Internet Age</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mining.html">Bitcoin Mining: The Heart of the Blockchain</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bitcoin Transactions: The Building Blocks of the Blockchain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet.html">Bitcoin Wallets: Your Gateway to the Blockchain</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/edit/master/bitcoin_express/content/transactions.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/sorukumar/BitcoinLightningLab/issues/new?title=Issue%20on%20page%20%2Fcontent/transactions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/transactions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bitcoin Transactions: The Building Blocks of the Blockchain</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-bitcoin-transaction">What is a Bitcoin Transaction?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-transaction">The Anatomy of a Transaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-create-a-transaction">Let’s Create a Transaction!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-the-transaction">Signing the Transaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-signing-code-explained">Key Parts of the Signing Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-transactions">Verifying Transactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-verification-code-explained">Key Parts of the Verification Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-transaction">Visualizing the Transaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bitcoin-transactions-the-building-blocks-of-the-blockchain">
+<h1>Bitcoin Transactions: The Building Blocks of the Blockchain<a class="headerlink" href="#bitcoin-transactions-the-building-blocks-of-the-blockchain" title="Link to this heading">#</a></h1>
+<section id="what-is-a-bitcoin-transaction">
+<h2>What is a Bitcoin Transaction?<a class="headerlink" href="#what-is-a-bitcoin-transaction" title="Link to this heading">#</a></h2>
+<p>Think of a Bitcoin transaction like writing a check for digital money. When you write a check, you specify:</p>
+<ul class="simple">
+<li><p><strong>Where the money comes from</strong> (your account)</p></li>
+<li><p><strong>Where it’s going</strong> (the recipient)</p></li>
+<li><p><strong>How much</strong> is being transferred</p></li>
+</ul>
+<p>Bitcoin transactions work similarly but with added security measures to ensure that only the rightful owner can spend their funds.</p>
+</section>
+<section id="the-anatomy-of-a-transaction">
+<h2>The Anatomy of a Transaction<a class="headerlink" href="#the-anatomy-of-a-transaction" title="Link to this heading">#</a></h2>
+<p>A Bitcoin transaction has three main parts:</p>
+<ol class="arabic simple">
+<li><p>Inputs: Previous transactions you’re spending from (like your account balance)</p></li>
+<li><p>Outputs: Where the Bitcoin is going (like writing out who gets paid on a check)</p></li>
+<li><p>Amount: How much Bitcoin is being moved</p></li>
+</ol>
+<p>Here’s a simple representation of a transaction:
+┌───────────────┐
+│   Transaction │
+├───────────────┤
+│ Inputs        │
+│ - Previous TX │
+│ - Output Index│
+├───────────────┤
+│ Outputs       │
+│ - Amount      │
+│ - Recipient   │
+└───────────────┘</p>
+</section>
+<section id="let-s-create-a-transaction">
+<h2>Let’s Create a Transaction!<a class="headerlink" href="#let-s-create-a-transaction" title="Link to this heading">#</a></h2>
+<p>Now, let’s write some code to create a simple Bitcoin transaction. This code will demonstrate how to structure a transaction with inputs and outputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TransactionInput</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prev_tx_hash</span><span class="p">,</span> <span class="n">output_index</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prev_tx_hash</span> <span class="o">=</span> <span class="n">prev_tx_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_index</span> <span class="o">=</span> <span class="n">output_index</span>
+
+<span class="k">class</span> <span class="nc">TransactionOutput</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">recipient_address</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recipient_address</span> <span class="o">=</span> <span class="n">recipient_address</span>
+
+<span class="k">class</span> <span class="nc">Transaction</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span> <span class="nf">add_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prev_tx_hash</span><span class="p">,</span> <span class="n">output_index</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TransactionInput</span><span class="p">(</span><span class="n">prev_tx_hash</span><span class="p">,</span> <span class="n">output_index</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">add_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">recipient_address</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TransactionOutput</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">recipient_address</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s create a transaction</span>
+<span class="n">tx</span> <span class="o">=</span> <span class="n">Transaction</span><span class="p">()</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># We&#39;re spending from a previous transaction with hash &#39;abc123&#39;, output index 0</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2&quot;</span><span class="p">)</span>  <span class="c1"># Sending 0.5 BTC to Bob</span>
+<span class="n">tx</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;1Alice9876543210&quot;</span><span class="p">)</span>  <span class="c1"># Our change: 0.4 BTC back to Alice</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transaction Inputs (Piggy banks we&#39;re breaking):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">tx</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Previous Transaction: </span><span class="si">{</span><span class="n">inp</span><span class="o">.</span><span class="n">prev_tx_hash</span><span class="si">}</span><span class="s2">, Output Index: </span><span class="si">{</span><span class="n">inp</span><span class="o">.</span><span class="n">output_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transaction Outputs (New piggy banks we&#39;re creating):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">out</span> <span class="ow">in</span> <span class="n">tx</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Amount: </span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2"> BTC, Recipient: </span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">recipient_address</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transaction Inputs (Piggy banks we&#39;re breaking):
+  Previous Transaction: abc123, Output Index: 0
+
+Transaction Outputs (New piggy banks we&#39;re creating):
+  Amount: 0.5 BTC, Recipient: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2
+  Amount: 0.4 BTC, Recipient: 1Alice9876543210
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-parts-of-the-code-explained">
+<h3>Key Parts of the Code Explained<a class="headerlink" href="#key-parts-of-the-code-explained" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>TransactionInput Class</strong>: Represents an input in a Bitcoin transaction.</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: It holds the details of the previous transaction being spent.</p></li>
+<li><p><strong>Attributes</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_tx_hash</span></code>: The hash of the previous transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_index</span></code>: The specific output from that transaction being used.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>TransactionOutput Class</strong>: Represents an output in a Bitcoin transaction.</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: It defines where the Bitcoin is going.</p></li>
+<li><p><strong>Attributes</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">amount</span></code>: The amount of Bitcoin being sent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recipient_address</span></code>: The address of the recipient.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Transaction Class</strong>: Manages the entire transaction.</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: It collects inputs and outputs to form a complete transaction.</p></li>
+<li><p><strong>Methods</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_input()</span></code>: Adds an input to the transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_output()</span></code>: Adds an output to the transaction.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="signing-the-transaction">
+<h2>Signing the Transaction<a class="headerlink" href="#signing-the-transaction" title="Link to this heading">#</a></h2>
+<p>In the real world, you sign a check to authorize it. In Bitcoin, we use a digital signature. It’s like a super secure, unforgeable signature that proves you have the right to spend from those inputs.</p>
+<p>Let’s see how we can generate a key pair and sign our transaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">ecdsa</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">generate_keypair</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a new ECDSA key pair.&quot;&quot;&quot;</span>
+    <span class="n">sk</span> <span class="o">=</span> <span class="n">ecdsa</span><span class="o">.</span><span class="n">SigningKey</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">ecdsa</span><span class="o">.</span><span class="n">SECP256k1</span><span class="p">)</span>
+    <span class="n">vk</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">get_verifying_key</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sk</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">(),</span> <span class="n">vk</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">sign_transaction</span><span class="p">(</span><span class="n">transaction</span><span class="p">,</span> <span class="n">private_key</span><span class="p">):</span>
+    <span class="c1"># In reality, we would serialize the entire transaction</span>
+    <span class="c1"># Here, we&#39;re just hashing a string representation for simplicity</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    
+    <span class="n">sk</span> <span class="o">=</span> <span class="n">ecdsa</span><span class="o">.</span><span class="n">SigningKey</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">private_key</span><span class="p">),</span> <span class="n">curve</span><span class="o">=</span><span class="n">ecdsa</span><span class="o">.</span><span class="n">SECP256k1</span><span class="p">)</span>
+    <span class="n">signature</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tx_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+    
+    <span class="k">return</span> <span class="n">signature</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+
+<span class="c1"># Generate a proper key pair</span>
+<span class="n">private_key</span><span class="p">,</span> <span class="n">public_key</span> <span class="o">=</span> <span class="n">generate_keypair</span><span class="p">()</span>
+
+<span class="c1"># Sign our transaction</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">sign_transaction</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">private_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Private Key: </span><span class="si">{</span><span class="n">private_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Public Key: </span><span class="si">{</span><span class="n">public_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transaction Signature: </span><span class="si">{</span><span class="n">signature</span><span class="p">[:</span><span class="mi">64</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>  <span class="c1"># Showing first 64 chars for brevity</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Private Key: a998ae920a780ac525276077a800a12c82ef353f4cb499fd8e3300967dd26ba2
+Public Key: 361709e7f2560b8495b88c486a7927ddccc67f8f9ee6cc09d322e17565212a44354315bcdf55b673e88b66bf9d460d391e49ff110027e206c77690c94c56c63d
+
+Transaction Signature: baf0aecd8e122212d2785e280850f275549de50c0e0ff2475ae5323ed16b4bbe...
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-parts-of-the-signing-code-explained">
+<h3>Key Parts of the Signing Code Explained<a class="headerlink" href="#key-parts-of-the-signing-code-explained" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>generate_keypair()</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Generates a new ECDSA (Elliptic Curve Digital Signature Algorithm) key pair.</p></li>
+<li><p><strong>Returns</strong>: A private key (used for signing) and a public key (used for verification).</p></li>
+</ul>
+</li>
+<li><p><strong>sign_transaction(transaction, private_key)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Signs the transaction using the private key.</p></li>
+<li><p><strong>Process</strong>:</p>
+<ul>
+<li><p>It creates a hash of the transaction using SHA-256.</p></li>
+<li><p>It uses the private key to generate a digital signature for that hash.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns</strong>: The digital signature in hexadecimal format.</p></li>
+</ul>
+</li>
+</ol>
+<p>This process ensures that only the owner of the private key can authorize the transaction, providing security and authenticity.</p>
+</section>
+</section>
+<section id="verifying-transactions">
+<h2>Verifying Transactions<a class="headerlink" href="#verifying-transactions" title="Link to this heading">#</a></h2>
+<p>Just as a bank verifies your signature on a check, the Bitcoin network needs to verify the digital signature on a transaction. Here’s how it works:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">verify_signature</span><span class="p">(</span><span class="n">transaction</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">public_key</span><span class="p">):</span>
+    <span class="n">tx_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    
+    <span class="n">vk</span> <span class="o">=</span> <span class="n">ecdsa</span><span class="o">.</span><span class="n">VerifyingKey</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">public_key</span><span class="p">),</span> <span class="n">curve</span><span class="o">=</span><span class="n">ecdsa</span><span class="o">.</span><span class="n">SECP256k1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vk</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">signature</span><span class="p">),</span> <span class="n">tx_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s verify our transaction</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="n">verify_signature</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">public_key</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is the signature valid? </span><span class="si">{</span><span class="n">is_valid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Is the signature valid? True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="key-parts-of-the-verification-code-explained">
+<h3>Key Parts of the Verification Code Explained<a class="headerlink" href="#key-parts-of-the-verification-code-explained" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>verify_signature(transaction, signature, public_key)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Verifies the digital signature of a transaction.</p></li>
+<li><p><strong>Process</strong>:</p>
+<ul>
+<li><p>It creates a hash of the transaction using SHA-256.</p></li>
+<li><p>It uses the public key to check if the signature matches the hash.</p></li>
+</ul>
+</li>
+<li><p><strong>Returns</strong>: A boolean indicating whether the signature is valid.</p></li>
+</ul>
+</li>
+</ol>
+<p>This verification process ensures that the transaction is legitimate and that the person spending the Bitcoin is authorized to do so.</p>
+</section>
+</section>
+<section id="visualizing-the-transaction">
+<h2>Visualizing the Transaction<a class="headerlink" href="#visualizing-the-transaction" title="Link to this heading">#</a></h2>
+<p>Let’s visualize our transaction to better understand its structure. This will help illustrate how inputs and outputs are connected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="k">def</span> <span class="nf">visualize_transaction</span><span class="p">(</span><span class="n">transaction</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">inp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="n">inputs</span><span class="p">):</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">inp</span><span class="o">.</span><span class="n">prev_tx_hash</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">,</span> <span class="s2">&quot;Transaction&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">out</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">transaction</span><span class="o">.</span><span class="n">outputs</span><span class="p">):</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;Transaction&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Output </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">amount</span><span class="si">}</span><span class="s2"> BTC</span><span class="se">\n</span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">recipient_address</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> 
+            <span class="n">node_size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bitcoin Transaction Structure&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">visualize_transaction</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/779391a7ef9fa774ac1e538e6f00254776a5530c90ea1b335044e8cc5804573f.png" src="../_images/779391a7ef9fa774ac1e538e6f00254776a5530c90ea1b335044e8cc5804573f.png" />
+</div>
+</div>
+</section>
+<section id="what-did-we-learn">
+<h2>What Did We Learn?<a class="headerlink" href="#what-did-we-learn" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>A Bitcoin transaction is like a digital check</strong>: It specifies where the money comes from and where it’s going.</p></li>
+<li><p><strong>Inputs reference previous transactions</strong>: They show where the Bitcoin is coming from.</p></li>
+<li><p><strong>Outputs specify where the Bitcoin is going</strong>: They indicate the amount and recipient.</p></li>
+<li><p><strong>We sign transactions to prove ownership</strong>: This is similar to signing a check.</p></li>
+<li><p><strong>The network verifies signatures</strong>: Ensuring the transaction is legitimate.</p></li>
+<li><p><strong>ECDSA provides security</strong>: It allows you to prove it’s you without revealing your private key.</p></li>
+<li><p><strong>Transactions can have multiple inputs and outputs</strong>: This allows for complex money movements, but at its core, it’s about securely transferring value.</p></li>
+</ol>
+</section>
+<section id="quick-check-did-you-get-it">
+<h2>Quick Check: Did You Get It?<a class="headerlink" href="#quick-check-did-you-get-it" title="Link to this heading">#</a></h2>
+<p>Let’s see if you caught the main ideas about Bitcoin transactions:</p>
+<ol class="arabic simple">
+<li><p>What are the three main parts of a Bitcoin transaction? (Hint: Think of a check)</p></li>
+<li><p>What is the purpose of a digital signature in Bitcoin? (Hint: It’s like signing a check)</p></li>
+<li><p>What do we call the previous transactions that inputs reference? (Hint: They show where the Bitcoin is coming from)</p></li>
+</ol>
+<p>Think about your answers, then check below!</p>
+<details>
+<summary>Click to see the answers</summary>
+<ol class="arabic simple">
+<li><p>Inputs, Outputs, and Amount.</p></li>
+<li><p>To prove ownership and authorize the transaction.</p></li>
+<li><p>Previous transactions.</p></li>
+</ol>
+<p>Congratulations on completing the transactions chapter!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mining.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bitcoin Mining: The Heart of the Blockchain</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="wallet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bitcoin Wallets: Your Gateway to the Blockchain</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-bitcoin-transaction">What is a Bitcoin Transaction?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-transaction">The Anatomy of a Transaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-create-a-transaction">Let’s Create a Transaction!</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-code-explained">Key Parts of the Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-the-transaction">Signing the Transaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-signing-code-explained">Key Parts of the Signing Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-transactions">Verifying Transactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parts-of-the-verification-code-explained">Key Parts of the Verification Code Explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-transaction">Visualizing the Transaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What Did We Learn?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-check-did-you-get-it">Quick Check: Did You Get It?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Saurabh Kumar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
